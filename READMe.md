@@ -23,11 +23,18 @@ As seguintes ferramentas foram usadas ao longo dos projetos:
 
 ## 🦸 Autor
 
-<a>
- <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/56005905?v=4" width="100px;" alt=""/>
- <br />
- <sub><b>Felipe Tavoni</b></sub></a>
- <br />
+<table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img style="border-radius: 25%" src="https://avatars.githubusercontent.com/u/56005905?v=4" width="100px;" alt="Foto de Felipe Tavoni"/><br>
+        <sub>
+          <b>Felipe Tavoni</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ---
 
