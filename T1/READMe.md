@@ -7,7 +7,7 @@
 </h4>
 
 <p align="center">
-	<a href="#-o-que-é-?">O que é ?</a> |
+	<a href="#-O-que-é-?">O que é ?</a> |
 	<a href="#-exemplos">Exemplos</a> |
 	<a href="#-como-executar">Como executar</a>
 </p>
@@ -238,11 +238,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## 🦸 Autor
 
-<a>
- <img style="border-radius: 25%;" src="https://avatars.githubusercontent.com/u/56005905?v=4" width="100px;" alt=""/>
- <br />
- <sub><b>Felipe Tavoni 😎</b></sub></a>
- <br />
+<img style="border-radius: 100%;" src="https://avatars.githubusercontent.com/u/56005905?v=4" width="100px;" alt=""/>
+<br />
+<b>Felipe Tavoni 😎</b>
 
 ---
 
