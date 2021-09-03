@@ -1,9 +1,10 @@
+
 <h1 align="center"> 
-	Princípio da Responsabilidade Única
+	Programação Orientada a Objetos Avançada
 </h1>
 
 <h4 align="center">
-    <img alt="SRP" title="#SRP" src="https://res.cloudinary.com/practicaldev/image/fetch/s--1QS5jGfh--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/i/wq2iycdlr8om91wzed1y.png" width="300px;" />
+    <img alt="SRP" title="#SRP" src="https://miro.medium.com/max/1838/1*1Fl0dq4B7vq3zqR2k8bHdg.jpeg" width="300px;" />
 </h4>
 
 <p align="center">
@@ -12,61 +13,17 @@
 	<a href="#-como-executar">Como executar</a>
 </p>
 
-## 🔍 O que é ?
+## Princípios S.O.L.I.D.
 
-Descrever o princípio
-
----
-
-## 💻 Exemplos
-
-Mostrar exemplos para ilustrar
-
-Classe PitStop vs PitStop (Tires, Gas, Aero, etc.)
-
----
-
-## 🔌 Como executar
-
-### Pré-requisitos
-
-Pré-requisitos para rodar
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
-
-#### 🧭 Executando a aplicação
-
-```bash
-
-# Clone este repositório
-$ git clone git@github.com:tgmarinho/README-ecoleta.git
-
-# Acesse a pasta do projeto no seu terminal/cmd
-$ cd README-ecoleta
-
-# Vá para a pasta da aplicação Front End
-$ cd web
-
-# Instale as dependências
-$ npm install
-
-# Execute a aplicação em modo de desenvolvimento
-$ npm run start
-
-# A aplicação será aberta na porta:3000 - acesse http://localhost:3000
-
-```
+O repositório a seguir visa discorrer sobre a programação orientada a objetos, focada no estudo dos princípios S.O.L.I.D.!
 
 ---
 
 ## 🛠 Tecnologias
 
-As seguintes ferramentas foram usadas na construção do projeto:
+As seguintes ferramentas foram usadas ao longo dos projetos:
 
--   Protótipo:  **[Go](site golang)**
-
----
-
-## 📘 Referências Bibliográficas
+-   **[C++ Compiler](https://gcc.gnu.org/install/download.html)**
 
 ---
 
