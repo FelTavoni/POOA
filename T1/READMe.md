@@ -32,7 +32,7 @@ Observe o código abaixo que implementa um administrador de livros em uma estant
 
 Ao observar a função da classe *Book*, seus métodos são responsáveis por criar, destruir, mostrar/imprimir o conteúdo e getters. Podemos dividir essas funcionalidades em duas, *gerenciamento* e *impressão*. Dado isso, conclui-se que a classe *Book* fere o SRP. Não obstante, o mesmo ocorre com a classe *BookShelf*, que também se encarrega do gerenciamento dos livros e da impressão desses. Novamente, há conflito com o princípio.
 
-```
+```c++
 class Book {
     private:
         char author[SIZE], title[SIZE], publisher[SIZE];
@@ -98,15 +98,7 @@ int main() {
 
 Para resolver isso, é necessário que essas funcionalidades sejam internacionalizadas, ou seja, removidas e inseridas em um contexto global, como é possível observar no código abaixo.
 
-```
-#include <iostream>
-#include <stdlib.h>
-#include <string.h>
-
-#define SIZE 20
-
-using namespace std;
-
+```c++
 class Book {
     private:
         char author[SIZE], title[SIZE], publisher[SIZE];
@@ -238,14 +230,15 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## 🦸 Autor
 
-<img style="border-radius: 100%;" src="https://avatars.githubusercontent.com/u/56005905?v=4" width="100px;" alt=""/>
-<br />
-<b>Felipe Tavoni 😎</b>
+<a>
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/56005905?v=4" width="100px;" alt=""/>
+ <br />
+ <sub><b>Felipe Tavoni</b></sub></a>
+ <br />
 
 ---
 
 <!-- ## 📝 Licença
 
 Este projeto esta sobe a licença [MIT](./LICENSE).
-
-Feito com ❤️ por Thiago Marinho 👋🏽 [Entre em contato!](https://www.linkedin.com/in/tgmarinho/) -->
+ -->

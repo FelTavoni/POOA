@@ -23,9 +23,11 @@ As seguintes ferramentas foram usadas ao longo dos projetos:
 
 ## 🦸 Autor
 
-<img style="border-radius: 100%;" src="https://avatars.githubusercontent.com/u/56005905?v=4" width="100px;" alt=""/>
-<br />
-<b>Felipe Tavoni 😎</b>
+<a>
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/56005905?v=4" width="100px;" alt=""/>
+ <br />
+ <sub><b>Felipe Tavoni</b></sub></a>
+ <br />
 
 ---
 
@@ -33,4 +35,4 @@ As seguintes ferramentas foram usadas ao longo dos projetos:
 
 Este projeto esta sobe a licença [MIT](./LICENSE).
 
-Feito com ❤️ por Thiago Marinho 👋🏽 [Entre em contato!](https://www.linkedin.com/in/tgmarinho/) -->
+ -->
