@@ -22,30 +22,33 @@ Para ilustrar um pouco mais, segue um exemplo abaixo.
 
 ## 💻 Exemplos
 
-Para ilustar esse princípio, consideremos uma aplicação que exibe as notícias do dia de diferentes websites. O código pode ser consultado [aqui](./main.py), seguindo seu fluxo natural. Como pode-se observar, as classes estão isoladas umas das outras, cada uma com uma única responsabilidade (como no princípio SRP). Mas e se desejarmos adicionar um novo site a essa aplicação sem que haja grandes modificações no código? Simples! Basta que uma tupla seja adicionada em `WebsiteSources.py`, indicando a url do site de notícias, a tag a ser buscada, e uma componente da classe para refinar a busca. Apenas uma nova linha deve ser adicionada ao código para que novas notícias sejam impressas!
+Para ilustar esse princípio, consideremos uma aplicação que exibe as notícias do dia de diferentes websites. O código completo pode ser consultado [aqui](./main.py) neste diretório. Como pode-se observar abaixo, `WebsiteSources.py` mantém as classes que são focadas na obtenção das notícias, cada uma com uma única fonte. Dito isso, é possível observar que, caso deseja-se adicionar um novo website, basta que seja criada uma nova classe, via herança, e sobrescrever o construtor, além de chamá-la no método `main.py`. Isso garante o princípio OCP, dado que a extensão será isolada, ou seja, não será necessário interferir no comportamento de nenhuma outra classe! Além disso, observa-se a presença do princípio SRP, já que cada classe está incubida de apenas obter as notícias de determinada fonte.
 
 ```python
-class WebsiteSources:
+class NewsFromSource:
+    
+    def __init__(self, source, url, htlm_tag, html_class):
+        self.source = source 
+        self.url = url
+        self.html_tag = htlm_tag
+        self.html_class = html_class
+        self.news = []
 
-    # Websites which we will be extracting the news.
-    # They follow the structure: (editor, url, html tag, class type)
-    sources = [("G1", "https://g1.globo.com/", "a", "feed-post-link"),
-               ("UOL", "https://noticias.uol.com.br/", "h3", "thumb-title"),
-               ("EL PAÍS", "https://brasil.elpais.com/", "a", ""),
-               # Basta adicionar aqui uma tupla com as informações necessárias!
-               ("S.A.", "https://www.scientificamerican.com/", "h2", "t_small-listing-title")]
+    def getNews(self):
+        self.news = Scraper.Scrap(self.source, self.url, self.html_tag, self.html_class)
+        
 
-    @staticmethod
-    def getWebsites():
-        return WebsiteSources.sources
+class NewsFromG1(NewsFromSource):
+
+    def __init__(self):
+        NewsFromSource.__init__(self, "G1", "https://g1.globo.com/", "a", "feed-post-link")
 
     pass
 ```
 
-Mas a adição de websites não é a única componente que se beneficia do princípio OCP. A própria impressão das notícias também! Ao observar a classe `Viewer`, ilustrada abaixo, suporta impressões em console. Mas e se desejarmos uma impressão em um simples .csv? Basta então adicionar um método a mais na classe, não interferindo no contexto geral da aplicação! Além disso, um design pattern *Strategy* também pode ser utilizado para tornar o código ainda mais extensível!
+Mas a adição de websites não é a única componente que se beneficia do princípio OCP. A própria impressão das notícias também! A classe `Viewer`, ilustrada abaixo, suporta impressões em console e em arquivos CSV. Mas e se for desejado adicionar um terceiro método, que suporte impressões em TXT? Basta então adicionar um método a mais na classe, **relacionado a exibição da saída**, que implemente tal funcionalidade, não interferindo no contexto geral da aplicação! Assim, o código será extendido, mas não modificará qualquer outra componente do código.
 
 ```python
-# Class in charge of showing the search results.
 class Viewer:
 
     @staticmethod
@@ -55,11 +58,16 @@ class Viewer:
         pass
 
     @staticmethod
-    def printCSV():
-        pass
+    def printCSV(newsList):
+        header = ['source', 'title', 'link']
+        with open(newsList[0][0]+'News.csv', 'w', encoding='UTF-8') as f:
+            writer = csv.writer(f)
+            writer.writerow(header)
+            for news in newsList:
+                writer.writerow([news[0], news[1], news[2]])
 ```
 
-Avançando um pouco mais além, e se for desejado adicionar algum algoritmo de aprendizado para detectar tendências e diferenças entre os websites? Essas mudanças são mais complexas, e como pode-se inferir, uma nova classe deverá ser desenvolvida, visando isolar as funcionalidades (mantendo o SRP). Dessa forma, a chamada para esse algoritmo no código pode ser realizada em `Scraper.py`, com a ajuda de um design pattern, como o *Strategy*.
+Avançando um pouco mais, e se for desejado adicionar algum algoritmo de aprendizado para detectar tendências e diferenças entre os websites? Essas mudanças são mais complexas, mas para atender essa nova requisição, uma nova classe deverá ser desenvolvida, de forma a respeitar o SRP e o OCP. Dessa forma, a chamada para esse algoritmo no código pode ser realizada em `main.py`, possivelmente logo após a obtenção das notícias, a depender do objetivo do algoritmo.
 
 Com isso, fica evidente que a aplicação dos princípios SRP e OCP, apesar de aumentarem um pouco o tamanho dos códigos, os deixam mais legíveis e fáceis para modificação.
 
