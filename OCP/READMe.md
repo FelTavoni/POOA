@@ -37,6 +37,7 @@ class NewsFromSource:
     def getNews(self):
         self.news = Scraper.Scrap(self.source, self.url, self.html_tag, self.html_class)
         
+    pass
 
 class NewsFromG1(NewsFromSource):
 
@@ -55,7 +56,6 @@ class Viewer:
     def printConsole(newsList):
         for news in newsList:
             print(news[0], news[1], news[2])
-        pass
 
     @staticmethod
     def printCSV(newsList):
@@ -65,6 +65,8 @@ class Viewer:
             writer.writerow(header)
             for news in newsList:
                 writer.writerow([news[0], news[1], news[2]])
+
+    pass
 ```
 
 Avançando um pouco mais, e se for desejado adicionar algum algoritmo de aprendizado para detectar tendências e diferenças entre os websites? Essas mudanças são mais complexas, mas para atender essa nova requisição, uma nova classe deverá ser desenvolvida, de forma a respeitar o SRP e o OCP. Dessa forma, a chamada para esse algoritmo no código pode ser realizada em `main.py`, possivelmente logo após a obtenção das notícias, a depender do objetivo do algoritmo.

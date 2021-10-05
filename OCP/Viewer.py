@@ -6,7 +6,6 @@ class Viewer:
     def printConsole(newsList):
         for news in newsList:
             print(news[0], news[1], news[2])
-        pass
 
     @staticmethod
     def printCSV(newsList):
@@ -16,3 +15,5 @@ class Viewer:
             writer.writerow(header)
             for news in newsList:
                 writer.writerow([news[0], news[1], news[2]])
+
+    pass

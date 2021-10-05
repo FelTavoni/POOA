@@ -15,6 +15,7 @@ class NewsFromSource:
     def getNews(self):
         self.news = Scraper.Scrap(self.source, self.url, self.html_tag, self.html_class)
         
+    pass
 
 class NewsFromG1(NewsFromSource):
 
