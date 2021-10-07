@@ -27,22 +27,26 @@ Para ilustar esse princípio, consideremos uma aplicação que exibe as notícia
 ```python
 class NewsFromSource:
     
-    def __init__(self, source, url, htlm_tag, html_class):
+    def __init__(self, source: str, url: str, htlm_tag: str, html_class: str, strategy: Strategy) -> None:
         self.source = source 
         self.url = url
         self.html_tag = htlm_tag
         self.html_class = html_class
+        self.strategy = strategy
         self.news = []
 
-    def getNews(self):
+    def getNews(self) -> list:
         self.news = Scraper.Scrap(self.source, self.url, self.html_tag, self.html_class)
+
+    def setStrategy(self, strategy: Strategy) -> None:
+        self.strategy = strategy
         
     pass
 
 class NewsFromG1(NewsFromSource):
 
-    def __init__(self):
-        NewsFromSource.__init__(self, "G1", "https://g1.globo.com/", "a", "feed-post-link")
+    def __init__(self, strategy: Strategy) -> None:
+        NewsFromSource.__init__(self, "G1", "https://g1.globo.com/", "a", "feed-post-link", strategy)
 
     pass
 ```
