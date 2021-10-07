@@ -47,18 +47,28 @@ class NewsFromG1(NewsFromSource):
     pass
 ```
 
-Mas a adição de websites não é a única componente que se beneficia do princípio OCP. A própria impressão das notícias também! A classe `Viewer`, ilustrada abaixo, suporta impressões em console e em arquivos CSV. Mas e se for desejado adicionar um terceiro método, que suporte impressões em TXT? Basta então adicionar um método a mais na classe, **relacionado a exibição da saída**, que implemente tal funcionalidade, não interferindo no contexto geral da aplicação! Assim, o código será extendido, mas não modificará qualquer outra componente do código.
+Mas a adição de websites não é a única componente que se beneficia do princípio OCP. A própria impressão das notícias também! A classe `Strategy`, ilustrada abaixo, suporta impressões em console e em arquivos CSV. Mas e se for desejado adicionar um terceiro método, que suporte impressões em TXT? Basta então adicionar um método a mais na classe, que implemente tal funcionalidade, não interferindo no contexto geral da aplicação! Assim, na classe main, podemos definir a estratégia a ser utilizada para a impressão.
 
 ```python
-class Viewer:
+class Strategy(ABC):
 
-    @staticmethod
-    def printConsole(newsList):
+    @abstractmethod
+    def execute_algorithm(self, newsList):
+        pass
+
+    pass
+
+class PrintConsole(Strategy):
+
+    def execute_algorithm(self, newsList):
         for news in newsList:
             print(news[0], news[1], news[2])
 
-    @staticmethod
-    def printCSV(newsList):
+    pass
+
+class PrintCSV(Strategy):
+
+    def execute_algorithm(self, newsList):
         header = ['source', 'title', 'link']
         with open(newsList[0][0]+'News.csv', 'w', encoding='UTF-8') as f:
             writer = csv.writer(f)
@@ -69,7 +79,7 @@ class Viewer:
     pass
 ```
 
-Avançando um pouco mais, e se for desejado adicionar algum algoritmo de aprendizado para detectar tendências e diferenças entre os websites? Essas mudanças são mais complexas, mas para atender essa nova requisição, uma nova classe deverá ser desenvolvida, de forma a respeitar o SRP e o OCP. Dessa forma, a chamada para esse algoritmo no código pode ser realizada em `main.py`, possivelmente logo após a obtenção das notícias, a depender do objetivo do algoritmo.
+Mas e se for desejado adicionar algum algoritmo de aprendizado para detectar tendências e diferenças entre os websites? Ou talvez exportar as listas geradas para a *nuvem*? Essas mudanças são mais complexas, mas para atender essa nova requisição, basta seguir o design pattern *strategy* adotado anteriormente, adicionando uma nova classe em `Strategy.py`, e assim, trocar a estratégia em uso na função main.
 
 Com isso, fica evidente que a aplicação dos princípios SRP e OCP, apesar de aumentarem um pouco o tamanho dos códigos, os deixam mais legíveis e fáceis para modificação.
 
