@@ -5,24 +5,26 @@
     The following code implements the SRP and OCP from the S.O.L.I.D. principles in a online news scraper.
 """
 
-from Viewer import Viewer
+from Strategy import Strategy, PrintConsole, PrintCSV
 from WebsiteSources import NewsFromG1, NewsFromUOL, NewsFromElPais, NewsFromSA
 
 # Main. Run the application.
 if __name__ == "__main__":
-    globo = NewsFromG1()
+    globo = NewsFromG1(None)
     globo.getNews()
-    Viewer.printConsole(globo.news)
+    globo.setStrategy(PrintCSV())
+    globo.strategy.execute_algorithm(globo.news)
+    globo.setStrategy(PrintConsole())
+    globo.strategy.execute_algorithm(globo.news)
 
-    uol = NewsFromUOL()
+    uol = NewsFromUOL(PrintConsole())
     uol.getNews()
-    Viewer.printCSV(uol.news)
+    uol.strategy.execute_algorithm(uol.news)
 
-    elpais = NewsFromElPais()
+    elpais = NewsFromElPais(PrintConsole())
     elpais.getNews()
-    Viewer.printConsole(elpais.news)
+    elpais.strategy.execute_algorithm(uol.news)
 
-    scienAmer = NewsFromSA()
+    scienAmer = NewsFromSA(PrintConsole())
     scienAmer.getNews()
-    Viewer.printConsole(scienAmer.news)
-    
+    scienAmer.strategy.execute_algorithm(scienAmer.news)
