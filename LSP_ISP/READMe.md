@@ -22,7 +22,7 @@ Já o *Princípio de Segregação das Interfaces* diz que clientes não devem se
 
 ## 💻 Exemplos
 
-Uma implementação de urna eletrônica foi realizada em UML para ilustrar os princípios acima, além de seguir os anteriormente apresentados. Você pode consultá-los [aqui](https://github.com/FelTavoni/POOA/LSP_ISP/UrnaEletronica.png).
+Uma implementação de urna eletrônica foi realizada em UML para ilustrar os princípios acima, além de seguir os anteriormente apresentados. Você pode consultá-los [aqui](./UrnaEletronica.png).
 
 ---
 
